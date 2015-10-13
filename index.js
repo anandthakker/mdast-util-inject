@@ -1,8 +1,11 @@
-'use strict';
+'use strict'
 
 /**
- * Square a number.
- * @param {number} x - base
- * @returns {number} x²
+ * Documentation for this function.
+ * @param {number} x - an input
+ * @returns {number} the output
+ * @example
+ * var square = require('square')
+ * square(5)
  */
-module.exports.square = function(x) { return x * x };
+module.exports.square = function (x) { return x * x }

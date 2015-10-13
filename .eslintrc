@@ -1,7 +1,5 @@
 {
-  "rules": {
-  },
-  "extends": "eslint:recommended",
+  "extends": ["standard"],
   "env": {
     "node": true,
     "es6": true,
