@@ -22,7 +22,6 @@ fs.readdirSync(fixtures)
 .filter(function (f) {
   return /\.[^.]+\.md$/.test(f) && !/expected\.md/.test(f)
 })
-.slice(0, 1)
 .forEach(function (f) {
   test(f, testInputFile.bind(null, f))
 })
