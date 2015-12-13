@@ -7,7 +7,6 @@ into some other markdown, keeping heading structure intact.
 
     npm install mdast-util-inject
 
-
 ## Usage
 
 ### inject
@@ -20,7 +19,7 @@ based on the target heading's level.  targetAst is modified in place
 
 -   `targetHeadingText` **string** The heading to look for in the target ast
 -   `targetAst` **object** The target markdown document, as an mdast
--   `toInjectAst` **object** The source markdown to be injected into the target.
+-   `toInjectAst` **object** The source markdown to be injected into the target, also as an mdast.
 
 **Examples**
 
