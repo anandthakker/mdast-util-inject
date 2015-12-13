@@ -1,3 +1,4 @@
+[![Circle CI](https://circleci.com/gh/anandthakker/mdast-util-inject.svg?style=svg)](https://circleci.com/gh/anandthakker/mdast-util-inject)
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 An [mdast](https://github.com/wooorm/mdast) utility to inject some markdown
