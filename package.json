@@ -7,7 +7,7 @@
     "docs-readme": "documentation-readme -s API",
     "docs-check": "documentation-readme -s API -c",
     "test": "npm run retire && npm run lint && npm run docs-check && tap --cov test/*.js",
-    "prepublish": "npm run docs"
+    "prepublish": "npm run docs-readme"
   },
   "devDependencies": {
     "documentation": "^2.1.0-alpha2",
