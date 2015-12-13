@@ -29,27 +29,22 @@ Feel free to adjust any of the defaults to taste after creating a new module.
 
 ## API
 
-### square
+### index
 
-Documentation for this function.
-
+Inject some markdown into some other markdown at a desired heading.  Heading
+levels in the source markdown are adjusted to match the target document
+based on the target heading's level.
 
 **Parameters**
 
--   `x` **number** an input
-
-
+-   `targetHeadingText` **string** The heading to look for in the target ast
+-   `targetAst` **object** The target markdown document, as an mdast
+-   `toInjectAst` **object** The source markdown to be injected into the target.
 
 **Examples**
 
 ```javascript
-var square = require('square')
-square(5)
+undefined
 ```
 
-
-
-Returns **number** the output
-
-
-
+Returns **** 

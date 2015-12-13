@@ -1,9 +1,44 @@
 'use strict'
 
+var fs = require('fs')
+var path = require('path')
 var test = require('tap').test
-var square = require('../').square
+var mdast = require('mdast')
+var inject = require('../')
 
-test('square', function (t) {
-  t.equal(square(2), 4)
-  t.end()
+var fixtures = path.join(__dirname, 'fixtures')
+var toInject = mdast.parse(fs.readFileSync(path.join(fixtures, 'inject.md'), 'utf-8'))
+
+function plugin (mdast) {
+  return function transform (targetAst, file, next) {
+    inject('API', targetAst, toInject)
+    next()
+  }
+}
+
+// Check any file in fixtures/ with something.blah.md, expecting output to equal
+// contents of something.expected.md
+fs.readdirSync(fixtures)
+.filter(function (f) {
+  return /\.[^.]+\.md$/.test(f) && !/expected\.md/.test(f)
 })
+.slice(0, 1)
+.forEach(function (f) {
+  test(f, testInputFile.bind(null, f))
+})
+
+function testInputFile (f, t) {
+  var input = fs.readFileSync(path.join(fixtures, f), 'utf-8')
+  var expectedFile = path.join(fixtures, f.replace(/[^.]*\.md/, 'expected.md'))
+
+  mdast.use(plugin).process(input, function (err, file, content) {
+    t.error(err)
+    if (process.env.UPDATE) {
+      fs.writeFileSync(expectedFile, content)
+    }
+    var expected = fs.readFileSync(expectedFile, 'utf-8')
+    t.same(content, expected)
+    t.end()
+  })
+}
+
