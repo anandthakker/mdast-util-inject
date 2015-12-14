@@ -22,7 +22,7 @@
   },
   "name": "mdast-util-inject",
   "description": "Inject some markdown into some other markdown, keeping heading structure intact.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "directories": {
     "test": "test"
   },
