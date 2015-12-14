@@ -46,3 +46,5 @@ console.log(mdast.stringify(target))
 //
 // Blargh
 ```
+
+Returns **boolean** whether the specified section was found and content inserted

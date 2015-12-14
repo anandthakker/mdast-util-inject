@@ -8,6 +8,7 @@ function findIndex (array, fn) {
       return i
     }
   }
+  return -1
 }
 
 module.exports = inject
@@ -20,6 +21,7 @@ module.exports = inject
  * @param {string} targetHeadingText The heading to look for in the target ast
  * @param {object} targetAst The target markdown document, as an mdast
  * @param {object} toInjectAst The source markdown to be injected into the target, also as an mdast.
+ * @return {boolean} whether the specified section was found and content inserted
  * @example
  * var mdast = require('mdast')
  * var inject = require('mdast-util-inject')
@@ -48,8 +50,8 @@ function inject (targetHeadingText, targetAst, toInjectAst) {
     return isHeading(node, targetHeadingText)
   })
 
-  if (!(head >= 0)) {
-    return
+  if (head === -1) {
+    return false
   }
 
   // find the next heading at the same heading level, which is where we'll
@@ -67,6 +69,8 @@ function inject (targetHeadingText, targetAst, toInjectAst) {
     head + 1, // start splice
     (nextHead >= 0 ? nextHead - head : targetAst.children.length - head) - 1 // items to delete
   ].concat(toInjectAst.children))
+
+  return true
 }
 
 /*

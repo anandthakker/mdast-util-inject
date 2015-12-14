@@ -5,7 +5,7 @@
     "lint": "eslint *.js test",
     "docs-page": "documentation --lint --github --format html --output .",
     "docs-readme": "documentation-readme -s Usage",
-    "docs-check": "documentation-readme -s API -c",
+    "docs-check": "documentation-readme -s Usage -c",
     "test": "npm run retire && npm run lint && npm run docs-check && tap --cov test/*.js",
     "prepublish": "npm run docs-readme"
   },
