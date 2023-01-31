@@ -66,8 +66,8 @@ function inject (targetHeadingText, targetAst, toInjectAst) {
 
   // insert content
   targetAst.children.splice.apply(targetAst.children, [
-    head + 1, // start splice
-    (nextHead >= 0 ? nextHead - head : targetAst.children.length - head) - 1 // items to delete
+    head + (nextHead >= 0 ? nextHead - head : targetAst.children.length - head), // start splice
+    0 // items to delete
   ].concat(toInjectAst.children))
 
   return true
