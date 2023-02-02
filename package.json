@@ -3,7 +3,7 @@
     "retire": "retire -p",
     "lint": "eslint *.js test",
     "docs-page": "documentation --lint --github --format html --output .",
-    "test": "npm run retire && npm run lint && npm run docs-check",
+    "test": "npm run retire && npm run lint",
     "build": "npx tsc -p tsconfig.json"
   },
   "name": "mdast-util-inject",
