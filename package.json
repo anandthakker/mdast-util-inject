@@ -1,5 +1,4 @@
 {
-  "main": "index.js",
   "scripts": {
     "retire": "retire -p",
     "lint": "eslint *.js test",
@@ -7,7 +6,8 @@
     "docs-readme": "documentation-readme -s Usage",
     "docs-check": "documentation-readme -s Usage -c",
     "test": "npm run retire && npm run lint && npm run docs-check && tap --cov test/*.js",
-    "prepublish": "npm run docs-readme"
+    "prepublish": "npm run docs-readme",
+    "build": "npx tsc -p tsconfig.json"
   },
   "devDependencies": {
     "documentation": "^2.1.0-alpha2",
@@ -23,6 +23,14 @@
   "name": "mdast-util-inject",
   "description": "Inject some markdown into some other markdown, keeping heading structure intact.",
   "version": "1.1.0",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "lib/",
+    "complex-types.d.ts",
+    "index.d.ts",
+    "index.js"
+  ],
   "directories": {
     "test": "test"
   },
