@@ -31,9 +31,6 @@
     "url": "https://github.com/anandthakker/mdast-util-inject/issues"
   },
   "homepage": "https://github.com/anandthakker/mdast-util-inject#readme",
-  "dependencies": {
-    "mdast-util-to-string": "^1.0.0"
-  },
   "devDependencies": {
     "documentation": "^14.0.1",
     "eslint": "^8.33.0",

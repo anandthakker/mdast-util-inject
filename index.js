@@ -1,6 +1,11 @@
 'use strict'
 
-var toString = require('mdast-util-to-string')
+var toString = (node) => {
+  if(node && node.children) {
+    const texts = node.children.filter(node => { return node.type === 'text'; }).map(node => { return node.value; });
+    return texts.join('');
+  }
+}
 
 function findIndex (array, fn) {
   for (var i = 0; i < array.length; i++) {
