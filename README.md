@@ -21,6 +21,7 @@ based on the target heading's level.  targetAst is modified in place
 -   `targetHeadingText` **string** The heading to look for in the target ast
 -   `targetAst` **object** The target markdown document, as an mdast
 -   `toInjectAst` **object** The source markdown to be injected into the target, also as an mdast.
+-   `_matcher` A function that determines equality between the searched string and the headers present in the tree. If omitted it defaults to strict equality (===)
 
 **Examples**
 
@@ -48,3 +49,29 @@ console.log(mdast.stringify(target))
 ```
 
 Returns **boolean** whether the specified section was found and content inserted
+
+**Matchers**
+
+There are 3 default matchers available as named exports of the package:
+
+- `defaultMatcher`: strict equality ===
+- `includesMatcher`: headerText.includes(searchedText)
+- `startsWithMatcher`: headerText.startsWith(searchedText)
+    
+You can pass a custom function as the matcher function, for example you could 
+define a function to match a header based on a regular expression.
+
+```javascript
+function regExpMatcher(headerString, searchedString) {
+    let regExp = new RegExp(searchedString)
+    return regExp.test(headerString)
+}
+
+var target = mdast.parse('# A document\n## Section1\nBlah\n## Section2\nBlargh')
+var newStuff = mdast.parse('# Some other document\nwith some content')
+inject('[a-z A-Z]*[2-9]', target, newStuff, regExpMatcher)
+```
+
+This will inject into the first header that satisfies the matcher function, in this case 'Section2' is the first one.
+
+**Note that all strings are trimmed and lowercased before being passed to the matcher**
